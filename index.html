@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hadi Azhar · Portofolio</title>
+<meta name="description" content="Hadi Azhar membuat aplikasi kecil, spreadsheet, video tutorial, dan video promo stop motion untuk usaha kecil. Batam, Indonesia.">
+<meta property="og:title" content="Hadi Azhar · Portofolio">
+<meta property="og:description" content="Aplikasi kecil, spreadsheet, video tutorial, dan video promo stop motion untuk usaha kecil.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hadi-azhar.github.io/portofolio/">
+<meta property="og:image" content="https://hadi-azhar.github.io/portofolio/media/sambal.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kraft: oklch(0.86 0.045 75);
+  --kraft-d: oklch(0.80 0.05 70);
+  --paper: oklch(0.975 0.012 85);
+  --ink: oklch(0.25 0.03 45);
+  --ink-2: oklch(0.42 0.03 50);
+  --tomato: oklch(0.52 0.18 32);
+  --teal: oklch(0.47 0.07 185);
+  --tape: oklch(0.93 0.03 90 / 0.78);
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--kraft);color:var(--ink);font:400 1.0625rem/1.6 "Familjen Grotesk",system-ui,sans-serif;
+  background-image:radial-gradient(oklch(0.80 0.05 70 / .22) 1px, transparent 1.2px);background-size:7px 7px;background-color:var(--kraft)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:clamp(28px,6vw,72px) clamp(18px,5vw,48px)}
+header{display:grid;gap:18px;max-width:46rem}
+.name{font-family:"Gochi Hand",cursive;font-size:1.35rem;color:var(--ink-2);transform:rotate(-2deg);transform-origin:left}
+h1{margin:0;font-weight:700;font-size:clamp(2.3rem,7vw,4.6rem);line-height:.98;letter-spacing:-.025em}
+h1 mark{background:none;color:var(--tomato)}
+.lede{margin:0;font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--ink-2);max-width:38rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0;padding:0;list-style:none}
+.chips li{background:var(--paper);padding:6px 12px;border-radius:3px;font-weight:500;font-size:.95rem;box-shadow:0 1px 0 oklch(0.6 0.05 60 / .35)}
+section{margin-top:clamp(56px,9vw,104px)}
+h2{margin:0 0 6px;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;letter-spacing:-.02em}
+.sub{margin:0 0 28px;color:var(--ink-2);max-width:40rem}
+.reels{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(22px,4vw,40px);align-items:start}
+.clip{margin:0;position:relative;background:var(--paper);padding:10px 10px 14px;border-radius:2px;
+  box-shadow:0 2px 0 oklch(0.55 0.05 60 / .25),0 14px 28px -14px oklch(0.35 0.05 50 / .45);transition:transform .5s var(--ease)}
+.clip:nth-child(3n+1){transform:rotate(-1.4deg)}
+.clip:nth-child(3n+2){transform:rotate(1deg);margin-top:28px}
+.clip:nth-child(3n){transform:rotate(-.6deg);margin-top:8px}
+.clip::before{content:"";position:absolute;top:-12px;left:50%;width:92px;height:26px;transform:translateX(-50%) rotate(-3deg);background:var(--tape);box-shadow:0 1px 2px oklch(0.4 0.03 60 / .2)}
+@media (hover:hover){.clip:hover{transform:rotate(0) translateY(-4px)}}
+video{display:block;width:100%;height:auto;background:var(--ink);border-radius:1px}
+.v916{aspect-ratio:9/16}
+.v169{aspect-ratio:16/9}
+figcaption{padding:12px 4px 0;font-size:.95rem;color:var(--ink-2)}
+figcaption b{display:block;color:var(--ink);font-size:1.05rem}
+.note{font-family:"Gochi Hand",cursive;color:oklch(0.45 0.16 32);font-size:1.1rem}
+.work{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center}
+.work .clip{transform:rotate(-.8deg);margin:0}
+.work.ex{grid-template-columns:minmax(0,.85fr) minmax(0,2fr)}
+.work.ex .clip+.clip{transform:rotate(.7deg)}
+.work p{margin:0 0 14px}
+.btn{display:inline-block;background:var(--tomato);color:var(--paper);text-decoration:none;font-weight:700;padding:12px 18px;border-radius:3px;
+  box-shadow:0 3px 0 oklch(0.40 0.15 32);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(1px);box-shadow:0 2px 0 oklch(0.40 0.15 32)}
+.btn:focus-visible,a:focus-visible,video:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+footer{margin-top:clamp(64px,10vw,120px);padding-top:24px;border-top:2px dashed oklch(0.6 0.05 60 / .5);display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--ink-2);font-size:.95rem}
+footer strong{color:var(--ink)}
+@media (max-width:760px){.work,.work.ex{grid-template-columns:1fr}.clip:nth-child(n){margin-top:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="name">Hadi Azhar · Batam</span>
+    <h1>Alat kecil yang bikin usaha kecil <mark>lebih rapi.</mark></h1>
+    <p class="lede">Saya membuat aplikasi web sederhana, spreadsheet Excel atau Google Sheets, video tutorial, dan video promo stop motion. Dikerjakan dengan bantuan AI, dicek ulang sebelum dikirim.</p>
+    <ul class="chips"><li>Aplikasi web kecil</li><li>Excel &amp; Google Sheets</li><li>Video tutorial</li><li>Video penjelas sistem</li><li>Video promo stop motion</li></ul>
+  </header>
+  <main>
+  <section aria-labelledby="ex">
+    <h2 id="ex">Video penjelas sistem, gaya stop motion</h2>
+    <p class="sub">Cara kerja aplikasi atau spreadsheet diceritakan dalam 12 sampai 15 detik: masalahnya apa, langkahnya apa, hasilnya apa. Cocok untuk promosi, onboarding, atau presentasi ke klien. Nama dan angka di video ini contoh.</p>
+    <div class="work ex">
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/explainer-a.jpg" width="720" height="1280" aria-label="Video penjelas aplikasi cek data anggota, gaya stop motion">
+          <source src="media/explainer-a.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Ketik Nama, Langsung Tahu</b>Aplikasi cek data anggota · 9:16 · 12 detik</figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/explainer-b.jpg" width="1280" height="720" aria-label="Video penjelas spreadsheet pembukuan UMKM, gaya stop motion">
+          <source src="media/explainer-b.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Struk Jadi Laba</b>Spreadsheet pembukuan UMKM · 16:9 · 15 detik</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <section aria-labelledby="sm">
+    <h2 id="sm">Video promo stop motion</h2>
+    <p class="sub">Gaya potongan kertas, sekitar 8 detik, format vertikal 9:16 untuk TikTok dan Reels. Ketiga merek di bawah ini fiktif, dibuat sebagai contoh. Untuk klien, video dibuat dari produk dan foto Anda sendiri.</p>
+    <div class="reels">
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/kopi.jpg" aria-label="Video promo stop motion Kopi Batam, merek fiktif" width="720" height="1280">
+          <source src="media/kopi.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Kopi cold brew</b>Minuman · merek fiktif "Kopi Batam"</figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/sambal.jpg" aria-label="Video promo stop motion Sambal Nyala, merek fiktif" width="720" height="1280">
+          <source src="media/sambal.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Sambal botol</b>Makanan · merek fiktif "Sambal Nyala"</figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/toner.jpg" aria-label="Video promo stop motion toner Embun, merek fiktif" width="720" height="1280">
+          <source src="media/toner.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Toner wajah</b>Perawatan kulit · merek fiktif "Embun"</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="app">
+    <h2 id="app">Aplikasi web + video tutorialnya</h2>
+    <p class="sub">Contoh aplikasi cek data anggota: ketik nama, langsung tahu terdaftar atau belum. Videonya dibuat otomatis dari aplikasinya, lengkap dengan kursor, zoom, dan teks langkah.</p>
+    <div class="work">
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/tutorial.jpg" aria-label="Video tutorial aplikasi cek data anggota" width="1280" height="720">
+          <source src="media/tutorial.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Tutorial 11 detik</b>Data anggota di demo adalah data contoh.</figcaption>
+      </figure>
+      <div>
+        <p>Versi aslinya memakai Google Sheets di akun pemilik data, jadi tanpa biaya hosting dan data tetap di tangan Anda.</p>
+        <p><a class="btn" href="https://hadi-azhar.github.io/cek-anggota-demo/">Coba aplikasinya</a></p>
+        <p class="note">bisa dicoba dari HP</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <span><strong>Hadi Azhar</strong>, Batam, Indonesia</span>
+    <span>Hubungi lewat projects.co.id: <strong>hadiazhar13</strong></span>
+  </footer>
+</div>
+</body>
+</html>
