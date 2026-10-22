@@ -57,8 +57,10 @@ figcaption b{display:block;color:var(--ink);font-size:1.05rem}
 .note{font-family:"Gochi Hand",cursive;color:oklch(0.45 0.16 32);font-size:1.1rem}
 .work{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center}
 .work .clip{transform:rotate(-.8deg);margin:0}
-.work.ex{grid-template-columns:minmax(0,.85fr) minmax(0,2fr)}
-.work.ex .clip+.clip{transform:rotate(.7deg)}
+.work.ex{grid-template-columns:minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.9fr);align-items:start}
+.work.ex .clip:nth-child(2){transform:rotate(.7deg)}
+.work.ex .clip:nth-child(3){transform:rotate(-.5deg);grid-column:3;grid-row:1}
+@media (max-width:1000px){.work.ex{grid-template-columns:1fr 1fr}.work.ex .clip:nth-child(3){grid-column:1 / -1;grid-row:auto}}
 .work p{margin:0 0 14px}
 .btn{display:inline-block;background:var(--tomato);color:var(--paper);text-decoration:none;font-weight:700;padding:12px 18px;border-radius:3px;
   box-shadow:0 3px 0 oklch(0.40 0.15 32);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
@@ -81,8 +83,14 @@ footer strong{color:var(--ink)}
   <main>
   <section aria-labelledby="ex">
     <h2 id="ex">Video penjelas sistem, gaya stop motion</h2>
-    <p class="sub">Cara kerja aplikasi atau spreadsheet diceritakan dalam 12 sampai 15 detik, dari masalahnya sampai hasilnya. Bisa dipakai buat promosi, onboarding, atau presentasi ke klien. Nama dan angka di video ini cuma contoh.</p>
+    <p class="sub">Cara kerja aplikasi atau spreadsheet diceritakan dalam 12 sampai 18 detik, dari masalahnya sampai hasilnya. Bisa dipakai buat promosi, onboarding, atau presentasi ke klien. Nama dan angka di video ini cuma contoh.</p>
     <div class="work ex">
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/explainer-c.jpg" width="720" height="1280" aria-label="Video penjelas alur pesanan WhatsApp ke rekap harian, gaya stop motion">
+          <source src="media/explainer-c.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Dari Chat ke Rekap</b>Pesanan WhatsApp jadi rekap harian · 9:16 · 18 detik</figcaption>
+      </figure>
       <figure class="clip">
         <video class="v916" controls playsinline preload="none" poster="media/explainer-a.jpg" width="720" height="1280" aria-label="Video penjelas aplikasi cek data anggota, gaya stop motion">
           <source src="media/explainer-a.mp4" type="video/mp4">
