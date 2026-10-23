@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hadi Azhar · Portofolio</title>
 <meta name="description" content="Hadi Azhar membuat aplikasi kecil, spreadsheet, video tutorial, dan video promo stop motion untuk usaha kecil. Batam, Indonesia.">
 <meta property="og:title" content="Hadi Azhar · Portofolio">
@@ -15,7 +15,8 @@
   (function () {
     var l = null;
     try { l = localStorage.getItem('lang'); } catch (e) {}
-    if (l !== 'en' && l !== 'id') l = (navigator.language || '').toLowerCase().indexOf('id') === 0 ? 'id' : 'en';
+    // Most buyers here are Indonesian small businesses, often on phones set to English. ID is the default; EN only if the visitor picked it.
+    if (l !== 'en') l = 'id';
     document.documentElement.lang = l;
     if (l === 'en') {
       document.title = 'Hadi Azhar · Portfolio';
@@ -108,6 +109,23 @@ footer strong{color:var(--ink)}
 .work.bts{grid-template-columns:1fr 1fr;align-items:start}
 @media (max-width:760px){.work.bts{grid-template-columns:1fr}}
 @media (max-width:520px){header.top{padding-right:0;padding-top:40px}.proj-head{grid-template-columns:1fr}.proj-num{font-size:3rem}}
+.nowrap{white-space:nowrap}
+.contact{display:grid;gap:8px;justify-items:start;margin-top:6px}
+.contact .btn{font-size:1.05rem}
+.contact-alt{margin:0;font-size:.95rem;color:var(--ink-2)}
+.price{margin:0;max-width:34rem;font-weight:500}
+.data{margin:4px 0 0;max-width:38rem;padding:12px 14px;background:oklch(0.975 0.012 85 / .7);border-radius:3px}
+.data .tag,.use .tag{font-family:"Gochi Hand",cursive;font-weight:400;color:oklch(0.45 0.16 32);font-size:1.25rem;margin-right:8px}
+.wa-float{display:none}
+@media (max-width:760px){
+  .wa-float{position:fixed;z-index:10;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));
+    display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;background:var(--tomato);color:var(--paper);
+    text-decoration:none;font-weight:700;box-shadow:0 3px 0 oklch(0.40 0.15 32),0 10px 22px -8px oklch(0.30 0.05 40 / .55);
+    transition:opacity .25s var(--ease),transform .3s var(--ease)}
+  .wa-float.away{opacity:0;transform:translateY(16px);pointer-events:none}
+  .wa-float:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+  footer{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -121,30 +139,42 @@ footer strong{color:var(--ink)}
     <span class="name">Hadi Azhar · Batam</span>
     <h1><span data-l="id">Alat sederhana dan video pendek buat usaha kecil.</span><span data-l="en">Simple tools and short videos for small businesses.</span></h1>
     <p class="lede"><span data-l="id">Saya bikin aplikasi web kecil dan spreadsheet Excel atau Google Sheets. Videonya juga saya yang bikin, mulai dari tutorial, penjelas cara kerja sistem, video peluncuran produk, sampai promo stop motion. Saya kerjakan pakai bantuan AI, dan sebelum dikirim hasilnya saya cek sendiri.</span><span data-l="en">I build small web apps and Excel or Google Sheets spreadsheets, and I make videos as well: tutorials, explainers that show how a system works, product launch videos and stop motion promos. I work with AI and check the result myself before anything is sent.</span></p>
+    <div class="contact" id="kontak">
+      <a class="btn wa" href="https://wa.me/6281211714596?text=Halo%20Hadi%2C%20saya%20lihat%20portofolionya.%20Mau%20tanya%20soal%20" data-href-en="https://wa.me/6281211714596?text=Hi%20Hadi%2C%20I%20saw%20your%20portfolio.%20I%27d%20like%20to%20ask%20about%20" target="_blank" rel="noopener"><span data-l="id">Chat di WhatsApp</span><span data-l="en">Chat on WhatsApp</span></a>
+      <p class="contact-alt"><span class="nowrap">+62 812 1171 4596</span> · <a href="mailto:hadiazhar13@gmail.com">hadiazhar13@gmail.com</a></p>
+      <p class="price"><span data-l="id">Harga dan lama pengerjaan saya kasih setelah lihat kebutuhannya. Tanya dulu gratis.</span><span data-l="en">I'll give you a price and a timeline once I've seen what you need. Asking is free.</span></p>
+    </div>
+    <p class="data"><span class="tag"><span data-l="id">soal data</span><span data-l="en">your data</span></span><span data-l="id">Kalau aplikasinya jalan di Google Sheets, aplikasi itu pakai akun Google milikmu sendiri. Datanya tetap di akun itu, dan tidak ada biaya hosting.</span><span data-l="en">If the app runs on Google Sheets, it runs in your own Google account. The data stays in that account, and there's no hosting bill.</span></p>
   </header>
   <main>
 
-  <section class="proj" aria-labelledby="film">
+  <section class="proj" aria-labelledby="app">
     <div class="proj-head">
       <span class="proj-num" aria-hidden="true"><small>no.</small>01</span>
       <div>
-        <h2 id="film"><span data-l="id">Video peluncuran produk, gaya film</span><span data-l="en">Product launch video, cinematic style</span></h2>
+        <h2 id="app"><span data-l="id">Aplikasi web + video tutorialnya</span><span data-l="en">A web app and its tutorial video</span></h2>
         <ul class="meta">
-          <li><span data-l="id">Video peluncuran</span><span data-l="en">Launch video</span></li>
-          <li>16:9</li>
-          <li><span data-l="id">33 detik</span><span data-l="en">33 seconds</span></li>
-          <li>HTML + Python</li>
+          <li><span data-l="id">Aplikasi web</span><span data-l="en">Web app</span></li>
+          <li>Google Sheets</li>
+          <li><span data-l="id">Tutorial 16:9 · 11 detik</span><span data-l="en">Tutorial 16:9 · 11 seconds</span></li>
         </ul>
       </div>
     </div>
-    <p class="sub"><span data-l="id">Cocok buat produk yang mau kelihatan premium. Yang ini cerita soal sistem cari kerja yang saya bikin buat diri sendiri. Panel kacanya melayang di atas latar sinematik, dan teksnya muncul satu kata demi satu kata. Nama perusahaan, iklan, dan email di dalamnya karangan.</span><span data-l="en">Good for a product that should look premium. This one is about a job-search system I built for myself. Glass panels float over a cinematic background, and the text comes in one word at a time. The company names, adverts and emails in it are made up.</span></p>
-    <figure class="clip wide">
-      <video class="v169" controls playsinline preload="none" poster="media/job-agent-poster.jpg" width="1280" height="720" aria-label="Video peluncuran produk gaya film tentang sistem cari kerja" data-aria-en="Cinematic product launch video about a job-search system">
-        <source src="media/job-agent-film.mp4" type="video/mp4">
-      </video>
-      <figcaption><b lang="en">My agents aren't asleep</b><span data-l="id">Sistem cari kerja pakai agen AI · videonya berbahasa Inggris · 16:9 · 33 detik</span><span data-l="en">Job-search system with AI agents · 16:9 · 33 seconds</span></figcaption>
-    </figure>
-    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Bisa dipasang paling atas di halaman produk, atau dipakai buat iklan pas hari peluncuran.</span><span data-l="en">It can sit at the top of a product page, or run as an ad on launch day.</span></p>
+    <p class="sub"><span data-l="id">Contohnya aplikasi cek data anggota. Ketik nama, langsung kelihatan orangnya sudah terdaftar atau belum. Video tutorialnya dibikin otomatis dari aplikasi itu, termasuk gerak kursor, zoom, dan teks tiap langkahnya.</span><span data-l="en">This one is a member check app. Type a name and it tells you straight away whether that person is registered. The tutorial video is generated from the app itself, cursor moves, zooms and step captions included.</span></p>
+    <div class="work">
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/tutorial.jpg" aria-label="Video tutorial aplikasi cek data anggota" data-aria-en="Tutorial video for the member check app" width="1280" height="720">
+          <source src="media/tutorial.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Tutorial 11 detik</span><span data-l="en">An 11-second tutorial</span></b><span data-l="id">Data anggota di demo adalah data contoh.</span><span data-l="en">The member data in the demo is sample data.</span></figcaption>
+      </figure>
+      <div>
+        <p><span data-l="id">Datanya diambil dari Google Sheets. Begitu Sheet diubah, aplikasinya langsung ikut.</span><span data-l="en">It reads from Google Sheets. Change the sheet and the app follows straight away.</span></p>
+        <p><a class="btn" href="https://hadi-azhar.github.io/cek-anggota-demo/"><span data-l="id">Coba aplikasinya</span><span data-l="en">Try the app</span></a></p>
+        <p class="note"><span data-l="id">bisa dicoba dari HP</span><span data-l="en">works on your phone too</span></p>
+      </div>
+    </div>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Admin nggak perlu buka spreadsheet cuma buat jawab satu pertanyaan.</span><span data-l="en">Nobody has to open the spreadsheet to answer one question.</span></p>
   </section>
 
   <section class="proj" aria-labelledby="ex">
@@ -156,7 +186,6 @@ footer strong{color:var(--ink)}
           <li>Stop motion</li>
           <li>9:16 + 16:9</li>
           <li><span data-l="id">12 sampai 18 detik</span><span data-l="en">12 to 18 seconds</span></li>
-          <li>HTML + Python</li>
         </ul>
       </div>
     </div>
@@ -193,7 +222,6 @@ footer strong{color:var(--ink)}
           <li><span data-l="id">Potongan kertas</span><span data-l="en">Paper cut-out</span></li>
           <li>9:16</li>
           <li><span data-l="id">sekitar 8 detik</span><span data-l="en">about 8 seconds</span></li>
-          <li>HTML + Python</li>
         </ul>
       </div>
     </div>
@@ -221,33 +249,26 @@ footer strong{color:var(--ink)}
     <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Konten TikTok dan Reels, dibikin pakai produk dan foto sendiri.</span><span data-l="en">TikTok and Reels posts made from your own product and photos.</span></p>
   </section>
 
-  <section class="proj" aria-labelledby="app">
+  <section class="proj" aria-labelledby="film">
     <div class="proj-head">
       <span class="proj-num" aria-hidden="true"><small>no.</small>04</span>
       <div>
-        <h2 id="app"><span data-l="id">Aplikasi web + video tutorialnya</span><span data-l="en">A web app and its tutorial video</span></h2>
+        <h2 id="film"><span data-l="id">Video peluncuran produk, gaya film</span><span data-l="en">Product launch video, cinematic style</span></h2>
         <ul class="meta">
-          <li><span data-l="id">Aplikasi web</span><span data-l="en">Web app</span></li>
-          <li>Google Sheets</li>
-          <li><span data-l="id">Tutorial 16:9 · 11 detik</span><span data-l="en">Tutorial 16:9 · 11 seconds</span></li>
+          <li><span data-l="id">Video peluncuran</span><span data-l="en">Launch video</span></li>
+          <li>16:9</li>
+          <li><span data-l="id">33 detik</span><span data-l="en">33 seconds</span></li>
         </ul>
       </div>
     </div>
-    <p class="sub"><span data-l="id">Contohnya aplikasi cek data anggota. Ketik nama, langsung kelihatan orangnya sudah terdaftar atau belum. Video tutorialnya dibikin otomatis dari aplikasi itu, termasuk gerak kursor, zoom, dan teks tiap langkahnya.</span><span data-l="en">This one is a member check app. Type a name and it tells you straight away whether that person is registered. The tutorial video is generated from the app itself, cursor moves, zooms and step captions included.</span></p>
-    <div class="work">
-      <figure class="clip">
-        <video class="v169" controls playsinline preload="none" poster="media/tutorial.jpg" aria-label="Video tutorial aplikasi cek data anggota" data-aria-en="Tutorial video for the member check app" width="1280" height="720">
-          <source src="media/tutorial.mp4" type="video/mp4">
-        </video>
-        <figcaption><b><span data-l="id">Tutorial 11 detik</span><span data-l="en">An 11-second tutorial</span></b><span data-l="id">Data anggota di demo adalah data contoh.</span><span data-l="en">The member data in the demo is sample data.</span></figcaption>
-      </figure>
-      <div>
-        <p><span data-l="id">Kalau dipakai beneran, aplikasinya jalan di Google Sheets, di akun Google milik sendiri. Tidak ada biaya hosting, dan datanya tetap di akun itu.</span><span data-l="en">For day-to-day use, it runs on Google Sheets in your Google account. There's no hosting bill, and the data stays in that account.</span></p>
-        <p><a class="btn" href="https://hadi-azhar.github.io/cek-anggota-demo/"><span data-l="id">Coba aplikasinya</span><span data-l="en">Try the app</span></a></p>
-        <p class="note"><span data-l="id">bisa dicoba dari HP</span><span data-l="en">works on your phone too</span></p>
-      </div>
-    </div>
-    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Admin nggak perlu buka spreadsheet cuma buat jawab satu pertanyaan.</span><span data-l="en">Nobody has to open the spreadsheet to answer one question.</span></p>
+    <p class="sub"><span data-l="id">Cocok buat produk yang mau kelihatan premium. Yang ini cerita soal sistem cari kerja yang saya bikin buat diri sendiri. Panel kacanya melayang di atas latar sinematik, dan teksnya muncul satu kata demi satu kata. Nama perusahaan, iklan, dan email di dalamnya karangan.</span><span data-l="en">Good for a product that should look premium. This one is about a job-search system I built for myself. Glass panels float over a cinematic background, and the text comes in one word at a time. The company names, adverts and emails in it are made up.</span></p>
+    <figure class="clip wide">
+      <video class="v169" controls playsinline preload="none" poster="media/job-agent-poster.jpg" width="1280" height="720" aria-label="Video peluncuran produk gaya film tentang sistem cari kerja" data-aria-en="Cinematic product launch video about a job-search system">
+        <source src="media/job-agent-film.mp4" type="video/mp4">
+      </video>
+      <figcaption><b lang="en">My agents aren't asleep</b><span data-l="id">Sistem cari kerja pakai agen AI · videonya berbahasa Inggris · 16:9 · 33 detik</span><span data-l="en">Job-search system with AI agents · 16:9 · 33 seconds</span></figcaption>
+    </figure>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Bisa dipasang paling atas di halaman produk, atau dipakai buat iklan pas hari peluncuran.</span><span data-l="en">It can sit at the top of a product page, or run as an ad on launch day.</span></p>
   </section>
 
   <section class="proj" aria-labelledby="bts">
@@ -262,7 +283,7 @@ footer strong{color:var(--ink)}
         </ul>
       </div>
     </div>
-    <p class="sub"><span data-l="id">Semua video di halaman ini awalnya kode HTML dan Python, terus dirender jadi file video. Urutannya kira-kira begini.</span><span data-l="en">Every video on this page starts as HTML and Python code and is then rendered to a video file. Roughly, it goes like this.</span></p>
+    <p class="sub"><span data-l="id">Video gaya film dan stop motion di halaman ini awalnya kode HTML dan Python, terus dirender jadi file video. Urutannya kira-kira begini.</span><span data-l="en">The cinematic and stop motion videos on this page start as HTML and Python code and are rendered into video files. Roughly, it goes like this.</span></p>
     <ol class="steps">
       <li><span data-l="id">Saya kumpulkan beberapa contoh video dengan gaya yang diinginkan, lalu saya bedah per frame, misalnya temponya atau cara teksnya muncul.</span><span data-l="en">I collect a few videos in a style you like and go through them frame by frame, looking at things like the pace and how the text comes in.</span></li>
       <li><span data-l="id">Sebelum render, urutan adegan per detik plus 3 sampai 4 gambar contoh saya kirim dulu. Kalau mau ganti sesuatu, paling murah di tahap ini.</span><span data-l="en">Before anything is rendered, you get the scene order second by second and 3 to 4 sample frames. If you want something changed, this is the cheapest moment to say so.</span></li>
@@ -282,15 +303,18 @@ footer strong{color:var(--ink)}
     </div>
     <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Revisi tinggal ubah kodenya, terus render ulang.</span><span data-l="en">To revise, I change the code and render it again.</span></p>
   </section>
+
   </main>
 
   <footer>
     <span><strong>Hadi Azhar</strong>, Batam, Indonesia</span>
+    <span>WhatsApp: <a href="https://wa.me/6281211714596?text=Halo%20Hadi%2C%20saya%20lihat%20portofolionya.%20Mau%20tanya%20soal%20" data-href-en="https://wa.me/6281211714596?text=Hi%20Hadi%2C%20I%20saw%20your%20portfolio.%20I%27d%20like%20to%20ask%20about%20" target="_blank" rel="noopener"><strong class="nowrap">+62 812 1171 4596</strong></a></span>
     <span>Email: <a href="mailto:hadiazhar13@gmail.com"><strong>hadiazhar13@gmail.com</strong></a></span>
     <span>projects.co.id: <strong>hadiazhar13</strong></span>
     <span><a href="https://hadi-azhar.github.io/"><span data-l="id">CV dan proyek lain (EN/ID)</span><span data-l="en">CV and other projects (EN/ID)</span></a></span>
   </footer>
 </div>
+<a class="wa-float" id="waFloat" href="https://wa.me/6281211714596?text=Halo%20Hadi%2C%20saya%20lihat%20portofolionya.%20Mau%20tanya%20soal%20" data-href-en="https://wa.me/6281211714596?text=Hi%20Hadi%2C%20I%20saw%20your%20portfolio.%20I%27d%20like%20to%20ask%20about%20" target="_blank" rel="noopener" aria-label="Chat dengan Hadi di WhatsApp" data-aria-en="Chat with Hadi on WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span data-l="id">Chat WhatsApp</span><span data-l="en">WhatsApp</span></a>
 <script>
 (function () {
   var root = document.documentElement;
@@ -301,6 +325,7 @@ footer strong{color:var(--ink)}
   // Keep the Indonesian attribute text so it can be restored.
   document.querySelectorAll('[data-aria-en]').forEach(function (el) { el.setAttribute('data-aria-id', el.getAttribute('aria-label')); });
   document.querySelectorAll('[data-alt-en]').forEach(function (el) { el.setAttribute('data-alt-id', el.getAttribute('alt')); });
+  document.querySelectorAll('[data-href-en]').forEach(function (el) { el.setAttribute('data-href-id', el.getAttribute('href')); });
   // applyLang only paints; setLang (button click) also remembers the choice.
   function applyLang(l) {
     root.lang = l;
@@ -309,6 +334,7 @@ footer strong{color:var(--ink)}
     if (d) d.setAttribute('content', T[l].desc);
     document.querySelectorAll('[data-aria-en]').forEach(function (el) { el.setAttribute('aria-label', el.getAttribute('data-aria-' + l)); });
     document.querySelectorAll('[data-alt-en]').forEach(function (el) { el.setAttribute('alt', el.getAttribute('data-alt-' + l)); });
+    document.querySelectorAll('[data-href-en]').forEach(function (el) { el.setAttribute('href', el.getAttribute('data-href-' + l)); });
     document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === l)); });
   }
   function setLang(l) {
@@ -319,6 +345,43 @@ footer strong{color:var(--ink)}
     b.addEventListener('click', function () { setLang(b.dataset.setLang); });
   });
   applyLang(root.lang === 'en' ? 'en' : 'id');
+
+  // Floating WhatsApp button (phones only, see CSS). It steps aside while the hero contact or the footer
+  // is on screen, and while a video's control bar or a button sits in the strip it would cover.
+  var fl = document.getElementById('waFloat');
+  var hero = document.getElementById('kontak');
+  var foot = document.querySelector('footer');
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video'));
+  var btns = Array.prototype.slice.call(document.querySelectorAll('main .btn'));
+  var queued = false;
+  function place() {
+    queued = false;
+    if (getComputedStyle(fl).display === 'none') return;
+    var vh = window.innerHeight, fr = fl.getBoundingClientRect();
+    // While hidden the button is shifted 16px down (see .away), so measure from its resting spot.
+    var off = fl.classList.contains('away') ? 16 : 0;
+    var zoneTop = fr.top - off - 8, zoneBottom = fr.bottom - off + 8;
+    var hide = false;
+    var hr = hero.getBoundingClientRect(), ft = foot.getBoundingClientRect();
+    if (hr.bottom > 0 && hr.top < vh) hide = true;
+    if (ft.top < vh) hide = true;
+    for (var i = 0; !hide && i < vids.length; i++) {
+      var r = vids[i].getBoundingClientRect();
+      // Control bar is roughly the bottom 56px of the video.
+      if (r.bottom > zoneTop && r.bottom - 56 < zoneBottom && r.right > fr.left && r.left < fr.right) hide = true;
+    }
+    for (var j = 0; !hide && j < btns.length; j++) {
+      var b = btns[j].getBoundingClientRect();
+      if (b.bottom > zoneTop && b.top < zoneBottom && b.right > fr.left - 8 && b.left < fr.right + 8) hide = true;
+    }
+    fl.classList.toggle('away', hide);
+    fl.tabIndex = hide ? -1 : 0;
+    if (hide) fl.setAttribute('aria-hidden', 'true'); else fl.removeAttribute('aria-hidden');
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(place); } }
+  window.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+  place();
 })();
 </script>
 </body>
