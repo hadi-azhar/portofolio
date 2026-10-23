@@ -10,6 +10,21 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hadi-azhar.github.io/portofolio/">
 <meta property="og:image" content="https://hadi-azhar.github.io/portofolio/media/sambal.jpg">
+<script>
+  // Pick language before first paint. Same 'lang' key as the CV site, so the choice carries over.
+  (function () {
+    var l = null;
+    try { l = localStorage.getItem('lang'); } catch (e) {}
+    if (l !== 'en' && l !== 'id') l = (navigator.language || '').toLowerCase().indexOf('id') === 0 ? 'id' : 'en';
+    document.documentElement.lang = l;
+    if (l === 'en') {
+      document.title = 'Hadi Azhar · Portfolio';
+      var d = document.querySelector('meta[name="description"]');
+      if (d) d.setAttribute('content', 'Hadi Azhar builds small web apps, spreadsheets, tutorial videos and stop motion promo videos for small businesses. Batam, Indonesia.');
+    }
+  })();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' text-anchor='middle' fill='%23fbfbfa'%3EHA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -19,7 +34,7 @@
   --kraft-d: oklch(0.80 0.05 70);
   --paper: oklch(0.975 0.012 85);
   --ink: oklch(0.25 0.03 45);
-  --ink-2: oklch(0.42 0.03 50);
+  --ink-2: oklch(0.40 0.03 50);
   --tomato: oklch(0.52 0.18 32);
   --teal: oklch(0.47 0.07 185);
   --tape: oklch(0.93 0.03 90 / 0.78);
@@ -27,20 +42,40 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
+html[lang="en"] [data-l="id"],html[lang="id"] [data-l="en"]{display:none}
 body{margin:0;background:var(--kraft);color:var(--ink);font:400 1.0625rem/1.6 "Familjen Grotesk",system-ui,sans-serif;
-  background-image:radial-gradient(oklch(0.80 0.05 70 / .22) 1px, transparent 1.2px);background-size:7px 7px;background-color:var(--kraft)}
+  background-image:radial-gradient(oklch(0.80 0.05 70 / .22) 1px, transparent 1.2px);background-size:7px 7px;background-color:var(--kraft);overflow-x:hidden}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:clamp(28px,6vw,72px) clamp(18px,5vw,48px)}
-header{display:grid;gap:18px;max-width:46rem}
+
+/* Language switch, same behaviour as the CV site */
+.lang{position:absolute;top:14px;right:14px;z-index:5;display:flex;background:var(--paper);border-radius:3px;overflow:hidden;
+  box-shadow:0 2px 0 oklch(0.55 0.05 60 / .3),0 8px 18px -10px oklch(0.35 0.05 50 / .5)}
+.lang button{font:700 .8rem/1 "Familjen Grotesk",system-ui,sans-serif;letter-spacing:.06em;background:transparent;color:var(--ink-2);border:0;cursor:pointer;
+  min-width:2.75rem;min-height:2.75rem;padding:0 .8rem;transition:background-color .2s var(--ease),color .2s var(--ease)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.lang button:focus-visible{outline:3px solid var(--teal);outline-offset:-3px}
+
+header.top{display:grid;gap:18px;max-width:46rem;padding-right:6.5rem}
 .name{font-family:"Gochi Hand",cursive;font-size:1.35rem;color:var(--ink-2);transform:rotate(-2deg);transform-origin:left}
 h1{margin:0;font-weight:700;font-size:clamp(2.3rem,7vw,4.6rem);line-height:.98;letter-spacing:-.025em}
 h1 mark{background:none;color:var(--tomato)}
 .lede{margin:0;font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--ink-2);max-width:38rem}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0;padding:0;list-style:none}
 .chips li{background:var(--paper);padding:6px 12px;border-radius:3px;font-weight:500;font-size:.95rem;box-shadow:0 1px 0 oklch(0.6 0.05 60 / .35)}
-section{margin-top:clamp(56px,9vw,104px)}
-h2{margin:0 0 6px;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;letter-spacing:-.02em}
-.sub{margin:0 0 28px;color:var(--ink-2);max-width:40rem}
+
+/* Each project is its own block: number, title, meta line, big media, one line on what it is for. */
+.proj{margin-top:clamp(64px,10vw,128px);padding-top:clamp(28px,4vw,44px);border-top:2px dashed oklch(0.6 0.05 60 / .5)}
+.proj-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px clamp(18px,3vw,32px);align-items:start;margin-bottom:18px}
+.proj-num{font-weight:700;font-size:clamp(3rem,8vw,5.5rem);line-height:.82;letter-spacing:-.05em;color:var(--tomato);font-variant-numeric:tabular-nums}
+.proj-num small{display:block;font:400 1.1rem/1 "Gochi Hand",cursive;letter-spacing:0;color:var(--ink-2);margin-bottom:6px;transform:rotate(-3deg);transform-origin:left}
+h2{margin:0 0 10px;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.05;letter-spacing:-.02em;max-width:24ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.meta li{font-size:.875rem;font-weight:500;padding:3px 10px;border-radius:3px;background:oklch(0.975 0.012 85 / .7);color:var(--ink)}
+.sub{margin:0 0 32px;color:var(--ink-2);max-width:42rem}
+.use{margin:32px 0 0;max-width:42rem;font-size:1.1rem;font-weight:500}
+.use .tag{font-family:"Gochi Hand",cursive;font-weight:400;color:oklch(0.45 0.16 32);font-size:1.25rem;margin-right:8px}
+
 .reels{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(22px,4vw,40px);align-items:start}
 .clip{margin:0;position:relative;background:var(--paper);padding:10px 10px 14px;border-radius:2px;
   box-shadow:0 2px 0 oklch(0.55 0.05 60 / .25),0 14px 28px -14px oklch(0.35 0.05 50 / .45);transition:transform .5s var(--ease)}
@@ -57,10 +92,10 @@ figcaption b{display:block;color:var(--ink);font-size:1.05rem}
 .note{font-family:"Gochi Hand",cursive;color:oklch(0.45 0.16 32);font-size:1.1rem}
 .work{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center}
 .work .clip{transform:rotate(-.8deg);margin:0}
-.work.ex{grid-template-columns:minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.9fr);align-items:start}
+.work.ex{grid-template-columns:minmax(280px,1fr) minmax(280px,1fr) minmax(0,1.6fr);align-items:start}
 .work.ex .clip:nth-child(2){transform:rotate(.7deg)}
 .work.ex .clip:nth-child(3){transform:rotate(-.5deg);grid-column:3;grid-row:1}
-@media (max-width:1000px){.work.ex{grid-template-columns:1fr 1fr}.work.ex .clip:nth-child(3){grid-column:1 / -1;grid-row:auto}}
+@media (max-width:1100px){.work.ex{grid-template-columns:1fr 1fr}.work.ex .clip:nth-child(3){grid-column:1 / -1;grid-row:auto}}
 .work p{margin:0 0 14px}
 .btn{display:inline-block;background:var(--tomato);color:var(--paper);text-decoration:none;font-weight:700;padding:12px 18px;border-radius:3px;
   box-shadow:0 3px 0 oklch(0.40 0.15 32);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
@@ -69,126 +104,195 @@ figcaption b{display:block;color:var(--ink);font-size:1.05rem}
 footer{margin-top:clamp(64px,10vw,120px);padding-top:24px;border-top:2px dashed oklch(0.6 0.05 60 / .5);display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--ink-2);font-size:.95rem}
 footer strong{color:var(--ink)}
 @media (max-width:760px){.work,.work.ex{grid-template-columns:1fr}.clip:nth-child(n){margin-top:0}}
-.clip.wide{max-width:900px;transform:rotate(-.4deg)}
+.clip.wide{max-width:980px;transform:rotate(-.4deg)}
 .clip img{display:block;width:100%;height:auto;border-radius:1px}
 .steps{max-width:44rem;margin:0 0 32px;padding-left:1.3rem}
 .steps li{margin:0 0 12px}
 .steps b{display:block}
 .work.bts{grid-template-columns:1fr 1fr;align-items:start}
 @media (max-width:760px){.work.bts{grid-template-columns:1fr}}
+@media (max-width:520px){header.top{padding-right:0;padding-top:40px}.proj-head{grid-template-columns:1fr}.proj-num{font-size:3rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+<div class="lang" role="group" aria-label="Language / Bahasa">
+  <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+  <button type="button" data-set-lang="id" aria-pressed="false">ID</button>
+</div>
 <div class="wrap">
-  <header>
+  <header class="top">
     <span class="name">Hadi Azhar · Batam</span>
-    <h1>Alat kecil yang bikin usaha kecil <mark>lebih rapi.</mark></h1>
-    <p class="lede">Saya membuat aplikasi web sederhana, spreadsheet Excel atau Google Sheets, video tutorial, dan video promo stop motion. Saya kerjakan dengan bantuan AI, lalu saya cek ulang sebelum dikirim.</p>
-    <ul class="chips"><li>Aplikasi web kecil</li><li>Excel &amp; Google Sheets</li><li>Video tutorial</li><li>Video penjelas sistem</li><li>Video peluncuran produk</li><li>Video promo stop motion</li></ul>
+    <h1><span data-l="id">Alat kecil yang bikin usaha kecil <mark>lebih rapi.</mark></span><span data-l="en">Small tools that keep a small business <mark>organised.</mark></span></h1>
+    <p class="lede"><span data-l="id">Saya membuat aplikasi web sederhana, spreadsheet Excel atau Google Sheets, video tutorial, dan video promo stop motion. Saya kerjakan dengan bantuan AI, lalu saya cek ulang sebelum dikirim.</span><span data-l="en">I build simple web apps, Excel or Google Sheets spreadsheets, tutorial videos and stop motion promo videos. I work with AI, then check everything again before it goes out.</span></p>
+    <ul class="chips">
+      <li><span data-l="id">Aplikasi web kecil</span><span data-l="en">Small web apps</span></li>
+      <li>Excel &amp; Google Sheets</li>
+      <li><span data-l="id">Video tutorial</span><span data-l="en">Tutorial videos</span></li>
+      <li><span data-l="id">Video penjelas sistem</span><span data-l="en">System explainer videos</span></li>
+      <li><span data-l="id">Video peluncuran produk</span><span data-l="en">Product launch videos</span></li>
+      <li><span data-l="id">Video promo stop motion</span><span data-l="en">Stop motion promo videos</span></li>
+    </ul>
   </header>
   <main>
-  <section aria-labelledby="film">
-    <h2 id="film">Video peluncuran produk, gaya film</h2>
-    <p class="sub">Untuk produk yang ingin tampil premium: latar sinematik, panel kaca yang melayang, teks yang muncul kata per kata. Contoh ini menceritakan sistem cari kerja buatan saya sendiri. Nama perusahaan, iklan, dan email di dalamnya rekaan.</p>
-    <figure class="clip wide">
-      <video class="v169" controls playsinline preload="none" poster="media/job-agent-film.jpg" width="1280" height="720" aria-label="Video peluncuran produk gaya film tentang sistem cari kerja">
-        <source src="media/job-agent-film.mp4" type="video/mp4">
-      </video>
-      <figcaption><b>My agents aren't asleep</b>Sistem cari kerja dengan agen AI · 16:9 · 33 detik</figcaption>
-    </figure>
-  </section>
 
-  <section aria-labelledby="ex">
-    <h2 id="ex">Video penjelas sistem, gaya stop motion</h2>
-    <p class="sub">Cara kerja aplikasi atau spreadsheet diceritakan dalam 12 sampai 18 detik, dari masalahnya sampai hasilnya. Bisa dipakai buat promosi, onboarding, atau presentasi ke klien. Nama dan angka di video ini cuma contoh.</p>
-    <div class="work ex">
-      <figure class="clip">
-        <video class="v916" controls playsinline preload="none" poster="media/explainer-c.jpg" width="720" height="1280" aria-label="Video penjelas alur pesanan WhatsApp ke rekap harian, gaya stop motion">
-          <source src="media/explainer-c.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Dari Chat ke Rekap</b>Pesanan WhatsApp jadi rekap harian · 9:16 · 18 detik</figcaption>
-      </figure>
-      <figure class="clip">
-        <video class="v916" controls playsinline preload="none" poster="media/explainer-a.jpg" width="720" height="1280" aria-label="Video penjelas aplikasi cek data anggota, gaya stop motion">
-          <source src="media/explainer-a.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Ketik Nama, Langsung Tahu</b>Aplikasi cek data anggota · 9:16 · 12 detik</figcaption>
-      </figure>
-      <figure class="clip">
-        <video class="v169" controls playsinline preload="none" poster="media/explainer-b.jpg" width="1280" height="720" aria-label="Video penjelas spreadsheet pembukuan UMKM, gaya stop motion">
-          <source src="media/explainer-b.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Struk Jadi Laba</b>Spreadsheet pembukuan UMKM · 16:9 · 15 detik</figcaption>
-      </figure>
-    </div>
-  </section>
-
-
-  <section aria-labelledby="sm">
-    <h2 id="sm">Video promo stop motion</h2>
-    <p class="sub">Gaya potongan kertas, sekitar 8 detik, format vertikal 9:16 untuk TikTok dan Reels. Ketiga merek di bawah ini fiktif, sengaja dibuat untuk contoh. Kalau Anda pesan, videonya dibuat dari produk dan foto Anda sendiri.</p>
-    <div class="reels">
-      <figure class="clip">
-        <video class="v916" controls playsinline preload="none" poster="media/kopi.jpg" aria-label="Video promo stop motion Kopi Batam, merek fiktif" width="720" height="1280">
-          <source src="media/kopi.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Kopi cold brew</b>Minuman · merek fiktif "Kopi Batam"</figcaption>
-      </figure>
-      <figure class="clip">
-        <video class="v916" controls playsinline preload="none" poster="media/sambal.jpg" aria-label="Video promo stop motion Sambal Nyala, merek fiktif" width="720" height="1280">
-          <source src="media/sambal.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Sambal botol</b>Makanan · merek fiktif "Sambal Nyala"</figcaption>
-      </figure>
-      <figure class="clip">
-        <video class="v916" controls playsinline preload="none" poster="media/toner.jpg" aria-label="Video promo stop motion toner Embun, merek fiktif" width="720" height="1280">
-          <source src="media/toner.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Toner wajah</b>Perawatan kulit · merek fiktif "Embun"</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section aria-labelledby="app">
-    <h2 id="app">Aplikasi web + video tutorialnya</h2>
-    <p class="sub">Contoh aplikasi cek data anggota: ketik nama, langsung tahu terdaftar atau belum. Videonya dibuat otomatis dari aplikasinya, lengkap dengan kursor, zoom, dan teks langkah.</p>
-    <div class="work">
-      <figure class="clip">
-        <video class="v169" controls playsinline preload="none" poster="media/tutorial.jpg" aria-label="Video tutorial aplikasi cek data anggota" width="1280" height="720">
-          <source src="media/tutorial.mp4" type="video/mp4">
-        </video>
-        <figcaption><b>Tutorial 11 detik</b>Data anggota di demo adalah data contoh.</figcaption>
-      </figure>
+  <section class="proj" aria-labelledby="film">
+    <div class="proj-head">
+      <span class="proj-num" aria-hidden="true"><small>no.</small>01</span>
       <div>
-        <p>Versi aslinya pakai Google Sheets di akun pemilik data. Jadi tidak ada biaya hosting, dan datanya tetap di tangan Anda.</p>
-        <p><a class="btn" href="https://hadi-azhar.github.io/cek-anggota-demo/">Coba aplikasinya</a></p>
-        <p class="note">bisa dicoba dari HP</p>
+        <h2 id="film"><span data-l="id">Video peluncuran produk, gaya film</span><span data-l="en">Product launch video, cinematic style</span></h2>
+        <ul class="meta">
+          <li><span data-l="id">Video peluncuran</span><span data-l="en">Launch video</span></li>
+          <li>16:9</li>
+          <li><span data-l="id">33 detik</span><span data-l="en">33 seconds</span></li>
+          <li>HTML + Python</li>
+        </ul>
       </div>
     </div>
+    <p class="sub"><span data-l="id">Untuk produk yang ingin tampil premium: latar sinematik, panel kaca yang melayang, teks yang muncul kata per kata. Contoh ini menceritakan sistem cari kerja buatan saya sendiri. Nama perusahaan, iklan, dan email di dalamnya rekaan.</span><span data-l="en">For products that want to look premium: a cinematic backdrop, floating glass panels, text that appears word by word. This one tells the story of a job-search system I built for myself. The company names, adverts and emails in it are made up.</span></p>
+    <figure class="clip wide">
+      <video class="v169" controls playsinline preload="none" poster="media/job-agent-film.jpg" width="1280" height="720" aria-label="Video peluncuran produk gaya film tentang sistem cari kerja" data-aria-en="Cinematic product launch video about a job-search system">
+        <source src="media/job-agent-film.mp4" type="video/mp4">
+      </video>
+      <figcaption><b>My agents aren't asleep</b><span data-l="id">Sistem cari kerja dengan agen AI · 16:9 · 33 detik</span><span data-l="en">Job-search system with AI agents · 16:9 · 33 seconds</span></figcaption>
+    </figure>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Video pembuka untuk halaman produk, iklan, atau unggahan peluncuran.</span><span data-l="en">An opening video for a product page, an ad, or a launch post.</span></p>
   </section>
 
+  <section class="proj" aria-labelledby="ex">
+    <div class="proj-head">
+      <span class="proj-num" aria-hidden="true"><small>no.</small>02</span>
+      <div>
+        <h2 id="ex"><span data-l="id">Video penjelas sistem, gaya stop motion</span><span data-l="en">System explainer videos, stop motion style</span></h2>
+        <ul class="meta">
+          <li>Stop motion</li>
+          <li>9:16 + 16:9</li>
+          <li><span data-l="id">12 sampai 18 detik</span><span data-l="en">12 to 18 seconds</span></li>
+          <li>HTML + Python</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub"><span data-l="id">Cara kerja aplikasi atau spreadsheet diceritakan dalam 12 sampai 18 detik, dari masalahnya sampai hasilnya. Nama dan angka di video ini cuma contoh.</span><span data-l="en">How an app or a spreadsheet works, told in 12 to 18 seconds, from the problem to the result. Names and numbers in these videos are only samples.</span></p>
+    <div class="work ex">
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/explainer-c.jpg" width="720" height="1280" aria-label="Video penjelas alur pesanan WhatsApp ke rekap harian, gaya stop motion" data-aria-en="Stop motion explainer: WhatsApp orders turned into a daily recap">
+          <source src="media/explainer-c.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Dari Chat ke Rekap</span><span data-l="en">From Chat to Recap</span></b><span data-l="id">Pesanan WhatsApp jadi rekap harian · 9:16 · 18 detik</span><span data-l="en">WhatsApp orders become a daily recap · 9:16 · 18 seconds</span></figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/explainer-a.jpg" width="720" height="1280" aria-label="Video penjelas aplikasi cek data anggota, gaya stop motion" data-aria-en="Stop motion explainer for a member check app">
+          <source src="media/explainer-a.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Ketik Nama, Langsung Tahu</span><span data-l="en">Type a Name, Know Right Away</span></b><span data-l="id">Aplikasi cek data anggota · 9:16 · 12 detik</span><span data-l="en">Member check app · 9:16 · 12 seconds</span></figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/explainer-b.jpg" width="1280" height="720" aria-label="Video penjelas spreadsheet pembukuan UMKM, gaya stop motion" data-aria-en="Stop motion explainer for a small business bookkeeping spreadsheet">
+          <source src="media/explainer-b.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Struk Jadi Laba</span><span data-l="en">Receipts Into Profit</span></b><span data-l="id">Spreadsheet pembukuan UMKM · 16:9 · 15 detik</span><span data-l="en">Small business bookkeeping spreadsheet · 16:9 · 15 seconds</span></figcaption>
+      </figure>
+    </div>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Promosi, onboarding, atau presentasi ke klien.</span><span data-l="en">Promotion, onboarding, or a pitch to a client.</span></p>
+  </section>
 
-  <section aria-labelledby="bts">
-    <h2 id="bts">Di balik layar: cara videonya dibuat</h2>
-    <p class="sub">Semua video di halaman ini dibuat dengan kode, bukan rekam layar atau aplikasi edit video. Karena itu tiap video bisa diubah dan dirender ulang dengan cepat kalau ada revisi.</p>
+  <section class="proj" aria-labelledby="sm">
+    <div class="proj-head">
+      <span class="proj-num" aria-hidden="true"><small>no.</small>03</span>
+      <div>
+        <h2 id="sm"><span data-l="id">Video promo stop motion</span><span data-l="en">Stop motion promo videos</span></h2>
+        <ul class="meta">
+          <li><span data-l="id">Potongan kertas</span><span data-l="en">Paper cut-out</span></li>
+          <li>9:16</li>
+          <li><span data-l="id">sekitar 8 detik</span><span data-l="en">about 8 seconds</span></li>
+          <li>HTML + Python</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub"><span data-l="id">Gaya potongan kertas, sekitar 8 detik, format vertikal 9:16. Ketiga merek di bawah ini fiktif, sengaja dibuat untuk contoh.</span><span data-l="en">Paper cut-out style, about 8 seconds, vertical 9:16. All three brands below are made up for these samples.</span></p>
+    <div class="reels">
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/kopi.jpg" aria-label="Video promo stop motion Kopi Batam, merek fiktif" data-aria-en="Stop motion promo for Kopi Batam, a made-up brand" width="720" height="1280">
+          <source src="media/kopi.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Kopi cold brew</span><span data-l="en">Cold brew coffee</span></b><span data-l="id">Minuman · merek fiktif "Kopi Batam"</span><span data-l="en">Drinks · made-up brand "Kopi Batam"</span></figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/sambal.jpg" aria-label="Video promo stop motion Sambal Nyala, merek fiktif" data-aria-en="Stop motion promo for Sambal Nyala, a made-up brand" width="720" height="1280">
+          <source src="media/sambal.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Sambal botol</span><span data-l="en">Bottled chili sauce</span></b><span data-l="id">Makanan · merek fiktif "Sambal Nyala"</span><span data-l="en">Food · made-up brand "Sambal Nyala"</span></figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v916" controls playsinline preload="none" poster="media/toner.jpg" aria-label="Video promo stop motion toner Embun, merek fiktif" data-aria-en="Stop motion promo for Embun toner, a made-up brand" width="720" height="1280">
+          <source src="media/toner.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Toner wajah</span><span data-l="en">Face toner</span></b><span data-l="id">Perawatan kulit · merek fiktif "Embun"</span><span data-l="en">Skincare · made-up brand "Embun"</span></figcaption>
+      </figure>
+    </div>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Konten TikTok dan Reels dari produk dan foto Anda sendiri.</span><span data-l="en">TikTok and Reels content made from your own product and photos.</span></p>
+  </section>
+
+  <section class="proj" aria-labelledby="app">
+    <div class="proj-head">
+      <span class="proj-num" aria-hidden="true"><small>no.</small>04</span>
+      <div>
+        <h2 id="app"><span data-l="id">Aplikasi web + video tutorialnya</span><span data-l="en">A web app and its tutorial video</span></h2>
+        <ul class="meta">
+          <li><span data-l="id">Aplikasi web</span><span data-l="en">Web app</span></li>
+          <li>Google Sheets</li>
+          <li><span data-l="id">Tutorial 16:9 · 11 detik</span><span data-l="en">Tutorial 16:9 · 11 seconds</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub"><span data-l="id">Contoh aplikasi cek data anggota: ketik nama, langsung tahu terdaftar atau belum. Videonya dibuat otomatis dari aplikasinya, lengkap dengan kursor, zoom, dan teks langkah.</span><span data-l="en">A sample member check app: type a name and see straight away whether that person is registered. The video is generated automatically from the app itself, with the cursor, zooms and step captions.</span></p>
+    <div class="work">
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/tutorial.jpg" aria-label="Video tutorial aplikasi cek data anggota" data-aria-en="Tutorial video for the member check app" width="1280" height="720">
+          <source src="media/tutorial.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Tutorial 11 detik</span><span data-l="en">An 11-second tutorial</span></b><span data-l="id">Data anggota di demo adalah data contoh.</span><span data-l="en">The member data in the demo is sample data.</span></figcaption>
+      </figure>
+      <div>
+        <p><span data-l="id">Versi aslinya pakai Google Sheets di akun pemilik data. Jadi tidak ada biaya hosting, dan datanya tetap di tangan Anda.</span><span data-l="en">The real version runs on Google Sheets in the data owner's own account. So there is no hosting bill, and the data stays in your hands.</span></p>
+        <p><a class="btn" href="https://hadi-azhar.github.io/cek-anggota-demo/"><span data-l="id">Coba aplikasinya</span><span data-l="en">Try the app</span></a></p>
+        <p class="note"><span data-l="id">bisa dicoba dari HP</span><span data-l="en">works on your phone too</span></p>
+      </div>
+    </div>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Admin tidak perlu buka spreadsheet untuk menjawab satu pertanyaan.</span><span data-l="en">Nobody has to open the spreadsheet to answer one question.</span></p>
+  </section>
+
+  <section class="proj" aria-labelledby="bts">
+    <div class="proj-head">
+      <span class="proj-num" aria-hidden="true"><small>no.</small>05</span>
+      <div>
+        <h2 id="bts"><span data-l="id">Di balik layar: cara videonya dibuat</span><span data-l="en">Behind the scenes: how the videos are made</span></h2>
+        <ul class="meta">
+          <li><span data-l="id">Proses kerja</span><span data-l="en">Process</span></li>
+          <li><span data-l="id">5 langkah</span><span data-l="en">5 steps</span></li>
+          <li>HTML + Python</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub"><span data-l="id">Semua video di halaman ini dibuat dengan kode, bukan rekam layar atau aplikasi edit video.</span><span data-l="en">Every video on this page is made with code, not with screen recording or a video editor.</span></p>
     <ol class="steps">
-      <li><b>Pelajari brief dan referensi.</b> Saya kumpulkan beberapa video yang gayanya Anda suka, lalu saya pelajari per frame: tempo, cara teks muncul, transisi.</li>
-      <li><b>Storyboard dan gambar contoh.</b> Sebelum render, Anda dapat urutan adegan per detik dan 3 sampai 4 gambar contoh. Revisi di tahap ini paling murah.</li>
-      <li><b>Bangun adegan dengan kode.</b> Tiap frame digambar dari kode (HTML dan Python), memakai tampilan produk Anda sendiri, bukan template.</li>
-      <li><b>Musik dan efek suara.</b> Dibuat sendiri dari kode, jadi tidak ada urusan lisensi musik.</li>
-      <li><b>Cek per frame, lalu kirim.</b> Teks terpotong, tumpukan, dan kontras dicek di titik-titik transisi sebelum video final dikirim, lengkap dengan teks siap posting.</li>
+      <li><b><span data-l="id">Pelajari brief dan referensi.</span><span data-l="en">Study the brief and references.</span></b> <span data-l="id">Saya kumpulkan beberapa video yang gayanya Anda suka, lalu saya pelajari per frame: tempo, cara teks muncul, transisi.</span><span data-l="en">I collect a few videos in a style you like and study them frame by frame: pacing, how the text comes in, transitions.</span></li>
+      <li><b><span data-l="id">Storyboard dan gambar contoh.</span><span data-l="en">Storyboard and sample frames.</span></b> <span data-l="id">Sebelum render, Anda dapat urutan adegan per detik dan 3 sampai 4 gambar contoh. Revisi di tahap ini paling murah.</span><span data-l="en">Before rendering, you get the scene order second by second and 3 to 4 sample frames. Changes are cheapest at this stage.</span></li>
+      <li><b><span data-l="id">Bangun adegan dengan kode.</span><span data-l="en">Build the scenes in code.</span></b> <span data-l="id">Tiap frame digambar dari kode (HTML dan Python), memakai tampilan produk Anda sendiri, bukan template.</span><span data-l="en">Every frame is drawn from code (HTML and Python), using the look of your own product, not a template.</span></li>
+      <li><b><span data-l="id">Musik dan efek suara.</span><span data-l="en">Music and sound effects.</span></b> <span data-l="id">Dibuat sendiri dari kode, jadi tidak ada urusan lisensi musik.</span><span data-l="en">Also made from code, so there is no music licence to worry about.</span></li>
+      <li><b><span data-l="id">Cek per frame, lalu kirim.</span><span data-l="en">Check every frame, then deliver.</span></b> <span data-l="id">Teks terpotong, tumpukan, dan kontras dicek di titik-titik transisi sebelum video final dikirim, lengkap dengan teks siap posting.</span><span data-l="en">Cut-off text, overlaps and contrast are checked at every transition before the final video goes out, together with a caption ready to post.</span></li>
     </ol>
     <div class="work bts">
       <figure class="clip">
-        <img src="media/bts-styleframe.jpg" alt="Empat gambar contoh yang disetujui sebelum video film dirender" width="1400" height="788" loading="lazy">
-        <figcaption><b>Gambar contoh sebelum render</b>Disetujui dulu, baru video penuh dibuat.</figcaption>
+        <img src="media/bts-styleframe.jpg" alt="Empat gambar contoh yang disetujui sebelum video film dirender" data-alt-en="Four sample frames approved before the cinematic video was rendered" width="1400" height="788" loading="lazy">
+        <figcaption><b><span data-l="id">Gambar contoh sebelum render</span><span data-l="en">Sample frames before rendering</span></b><span data-l="id">Disetujui dulu, baru video penuh dibuat.</span><span data-l="en">Approved first, then the full video is made.</span></figcaption>
       </figure>
       <figure class="clip">
-        <img src="media/bts-contact-c.jpg" alt="Lembar kontrol frame video stop motion Dari Chat ke Rekap" width="1400" height="1290" loading="lazy">
-        <figcaption><b>Lembar kontrol frame</b>Cara saya mengecek alur dan cacat sebelum video dikirim.</figcaption>
+        <img src="media/bts-contact-c.jpg" alt="Lembar kontrol frame video stop motion Dari Chat ke Rekap" data-alt-en="Frame contact sheet for the stop motion video From Chat to Recap" width="1400" height="1290" loading="lazy">
+        <figcaption><b><span data-l="id">Lembar kontrol frame</span><span data-l="en">Frame contact sheet</span></b><span data-l="id">Cara saya mengecek alur dan cacat sebelum video dikirim.</span><span data-l="en">How I check the flow and catch flaws before a video goes out.</span></figcaption>
       </figure>
     </div>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Revisi cukup ubah kode, lalu render ulang.</span><span data-l="en">A revision means editing the code and rendering again, not starting over.</span></p>
   </section>
   </main>
 
@@ -196,8 +300,38 @@ footer strong{color:var(--ink)}
     <span><strong>Hadi Azhar</strong>, Batam, Indonesia</span>
     <span>Email: <a href="mailto:hadiazhar13@gmail.com"><strong>hadiazhar13@gmail.com</strong></a></span>
     <span>projects.co.id: <strong>hadiazhar13</strong></span>
-    <span><a href="https://hadi-azhar.github.io/">CV dan proyek lain (EN/ID)</a></span>
+    <span><a href="https://hadi-azhar.github.io/"><span data-l="id">CV dan proyek lain (EN/ID)</span><span data-l="en">CV and other projects (EN/ID)</span></a></span>
   </footer>
 </div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var T = {
+    id: { title: 'Hadi Azhar · Portofolio', desc: 'Hadi Azhar membuat aplikasi kecil, spreadsheet, video tutorial, dan video promo stop motion untuk usaha kecil. Batam, Indonesia.' },
+    en: { title: 'Hadi Azhar · Portfolio', desc: 'Hadi Azhar builds small web apps, spreadsheets, tutorial videos and stop motion promo videos for small businesses. Batam, Indonesia.' }
+  };
+  // Keep the Indonesian attribute text so it can be restored.
+  document.querySelectorAll('[data-aria-en]').forEach(function (el) { el.setAttribute('data-aria-id', el.getAttribute('aria-label')); });
+  document.querySelectorAll('[data-alt-en]').forEach(function (el) { el.setAttribute('data-alt-id', el.getAttribute('alt')); });
+  // applyLang only paints; setLang (button click) also remembers the choice.
+  function applyLang(l) {
+    root.lang = l;
+    document.title = T[l].title;
+    var d = document.querySelector('meta[name="description"]');
+    if (d) d.setAttribute('content', T[l].desc);
+    document.querySelectorAll('[data-aria-en]').forEach(function (el) { el.setAttribute('aria-label', el.getAttribute('data-aria-' + l)); });
+    document.querySelectorAll('[data-alt-en]').forEach(function (el) { el.setAttribute('alt', el.getAttribute('data-alt-' + l)); });
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === l)); });
+  }
+  function setLang(l) {
+    try { localStorage.setItem('lang', l); } catch (e) {}
+    applyLang(l);
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+  });
+  applyLang(root.lang === 'en' ? 'en' : 'id');
+})();
+</script>
 </body>
 </html>
