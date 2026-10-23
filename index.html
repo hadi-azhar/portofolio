@@ -69,6 +69,13 @@ figcaption b{display:block;color:var(--ink);font-size:1.05rem}
 footer{margin-top:clamp(64px,10vw,120px);padding-top:24px;border-top:2px dashed oklch(0.6 0.05 60 / .5);display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--ink-2);font-size:.95rem}
 footer strong{color:var(--ink)}
 @media (max-width:760px){.work,.work.ex{grid-template-columns:1fr}.clip:nth-child(n){margin-top:0}}
+.clip.wide{max-width:900px;transform:rotate(-.4deg)}
+.clip img{display:block;width:100%;height:auto;border-radius:1px}
+.steps{max-width:44rem;margin:0 0 32px;padding-left:1.3rem}
+.steps li{margin:0 0 12px}
+.steps b{display:block}
+.work.bts{grid-template-columns:1fr 1fr;align-items:start}
+@media (max-width:760px){.work.bts{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -78,9 +85,20 @@ footer strong{color:var(--ink)}
     <span class="name">Hadi Azhar · Batam</span>
     <h1>Alat kecil yang bikin usaha kecil <mark>lebih rapi.</mark></h1>
     <p class="lede">Saya membuat aplikasi web sederhana, spreadsheet Excel atau Google Sheets, video tutorial, dan video promo stop motion. Saya kerjakan dengan bantuan AI, lalu saya cek ulang sebelum dikirim.</p>
-    <ul class="chips"><li>Aplikasi web kecil</li><li>Excel &amp; Google Sheets</li><li>Video tutorial</li><li>Video penjelas sistem</li><li>Video promo stop motion</li></ul>
+    <ul class="chips"><li>Aplikasi web kecil</li><li>Excel &amp; Google Sheets</li><li>Video tutorial</li><li>Video penjelas sistem</li><li>Video peluncuran produk</li><li>Video promo stop motion</li></ul>
   </header>
   <main>
+  <section aria-labelledby="film">
+    <h2 id="film">Video peluncuran produk, gaya film</h2>
+    <p class="sub">Untuk produk yang ingin tampil premium: latar sinematik, panel kaca yang melayang, teks yang muncul kata per kata. Contoh ini menceritakan sistem cari kerja buatan saya sendiri. Nama perusahaan, iklan, dan email di dalamnya rekaan.</p>
+    <figure class="clip wide">
+      <video class="v169" controls playsinline preload="none" poster="media/job-agent-film.jpg" width="1280" height="720" aria-label="Video peluncuran produk gaya film tentang sistem cari kerja">
+        <source src="media/job-agent-film.mp4" type="video/mp4">
+      </video>
+      <figcaption><b>My agents aren't asleep</b>Sistem cari kerja dengan agen AI · 16:9 · 33 detik</figcaption>
+    </figure>
+  </section>
+
   <section aria-labelledby="ex">
     <h2 id="ex">Video penjelas sistem, gaya stop motion</h2>
     <p class="sub">Cara kerja aplikasi atau spreadsheet diceritakan dalam 12 sampai 18 detik, dari masalahnya sampai hasilnya. Bisa dipakai buat promosi, onboarding, atau presentasi ke klien. Nama dan angka di video ini cuma contoh.</p>
@@ -150,6 +168,28 @@ footer strong{color:var(--ink)}
     </div>
   </section>
 
+
+  <section aria-labelledby="bts">
+    <h2 id="bts">Di balik layar: cara videonya dibuat</h2>
+    <p class="sub">Semua video di halaman ini dibuat dengan kode, bukan rekam layar atau aplikasi edit video. Karena itu tiap video bisa diubah dan dirender ulang dengan cepat kalau ada revisi.</p>
+    <ol class="steps">
+      <li><b>Pelajari brief dan referensi.</b> Saya kumpulkan beberapa video yang gayanya Anda suka, lalu saya pelajari per frame: tempo, cara teks muncul, transisi.</li>
+      <li><b>Storyboard dan gambar contoh.</b> Sebelum render, Anda dapat urutan adegan per detik dan 3 sampai 4 gambar contoh. Revisi di tahap ini paling murah.</li>
+      <li><b>Bangun adegan dengan kode.</b> Tiap frame digambar dari kode (HTML dan Python), memakai tampilan produk Anda sendiri, bukan template.</li>
+      <li><b>Musik dan efek suara.</b> Dibuat sendiri dari kode, jadi tidak ada urusan lisensi musik.</li>
+      <li><b>Cek per frame, lalu kirim.</b> Teks terpotong, tumpukan, dan kontras dicek di titik-titik transisi sebelum video final dikirim, lengkap dengan teks siap posting.</li>
+    </ol>
+    <div class="work bts">
+      <figure class="clip">
+        <img src="media/bts-styleframe.jpg" alt="Empat gambar contoh yang disetujui sebelum video film dirender" width="1400" height="788" loading="lazy">
+        <figcaption><b>Gambar contoh sebelum render</b>Disetujui dulu, baru video penuh dibuat.</figcaption>
+      </figure>
+      <figure class="clip">
+        <img src="media/bts-contact-c.jpg" alt="Lembar kontrol frame video stop motion Dari Chat ke Rekap" width="1400" height="1290" loading="lazy">
+        <figcaption><b>Lembar kontrol frame</b>Cara saya mengecek alur dan cacat sebelum video dikirim.</figcaption>
+      </figure>
+    </div>
+  </section>
   </main>
 
   <footer>
