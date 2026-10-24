@@ -106,6 +106,10 @@ footer strong{color:var(--ink)}
 .clip img{display:block;width:100%;height:auto;border-radius:1px}
 .steps{max-width:44rem;margin:0 0 32px;padding-left:1.3rem}
 .steps li{margin:0 0 12px}
+.work.ui{grid-template-columns:minmax(0,1.7fr) minmax(220px,.75fr);align-items:center}
+.work.ui .clip:nth-child(odd){transform:rotate(-.6deg)}
+.work.ui .clip:nth-child(even){transform:rotate(.8deg);margin-top:0}
+@media (max-width:760px){.work.ui{grid-template-columns:1fr}.work.ui .clip.v-tall{max-width:360px}}
 .work.bts{grid-template-columns:1fr 1fr;align-items:start}
 @media (max-width:760px){.work.bts{grid-template-columns:1fr}}
 @media (max-width:520px){header.top{padding-right:0;padding-top:40px}.proj-head{grid-template-columns:1fr}.proj-num{font-size:3rem}}
@@ -271,9 +275,51 @@ footer strong{color:var(--ink)}
     <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Bisa dipasang paling atas di halaman produk, atau dipakai buat iklan pas hari peluncuran.</span><span data-l="en">It can sit at the top of a product page, or run as an ad on launch day.</span></p>
   </section>
 
-  <section class="proj" aria-labelledby="bts">
+  <section class="proj" aria-labelledby="ui">
     <div class="proj-head">
       <span class="proj-num" aria-hidden="true"><small>no.</small>05</span>
+      <div>
+        <h2 id="ui"><span data-l="id">Video produk gaya aplikasi modern</span><span data-l="en">Product videos in a modern software style</span></h2>
+        <ul class="meta">
+          <li><span data-l="id">Animasi tampilan aplikasi</span><span data-l="en">App interface animation</span></li>
+          <li>16:9 + 9:16</li>
+          <li><span data-l="id">17 sampai 24 detik</span><span data-l="en">17 to 24 seconds</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub"><span data-l="id">Gayanya meniru video peluncuran perusahaan software besar: tampilan aplikasi dibesarkan, kamera bergerak pelan, teks pendek, dan musik dengan efek suara yang pas di tiap ketukan. Empat video ini temanya beda dan gayanya juga beda. Merek, nama, dan angka di dalamnya fiktif.</span><span data-l="en">The style follows launch videos from big software companies: the app interface shown up close, a slow-moving camera, short lines of text, and music with sound effects that land on each beat. Each of these four has its own topic and its own look. The brands, names and numbers in them are made up.</span></p>
+    <div class="work ui">
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/ui-cekanggota.jpg" width="1280" height="720" aria-label="Video produk gaya aplikasi untuk aplikasi cek anggota, tampilan gelap" data-aria-en="Software style product video for a member check app, dark look">
+          <source src="media/ui-cekanggota.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Cek anggota, gaya gelap</span><span data-l="en">Member check, dark style</span></b><span data-l="id">Aplikasi web dari Google Sheets · 16:9 · 24 detik</span><span data-l="en">Web app on Google Sheets · 16:9 · 24 seconds</span></figcaption>
+      </figure>
+      <figure class="clip v-tall">
+        <video class="v916" controls playsinline preload="none" poster="media/ui-bukulaba.jpg" width="720" height="1280" aria-label="Video produk vertikal untuk dashboard pembukuan UMKM, tampilan terang dengan gradien" data-aria-en="Vertical product video for a small business bookkeeping dashboard, bright gradient look">
+          <source src="media/ui-bukulaba.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Nota jadi laba</span><span data-l="en">Profit, counted for you</span></b><span data-l="id">Dashboard pembukuan · 9:16 · 21 detik</span><span data-l="en">Bookkeeping dashboard · 9:16 · 21 seconds</span></figcaption>
+      </figure>
+      <figure class="clip">
+        <video class="v169" controls playsinline preload="none" poster="media/ui-radarkerja.jpg" width="1280" height="720" aria-label="Video produk hitam putih tentang alur agen otomatis yang menyaring lowongan kerja" data-aria-en="Black and white product video about an automated agent pipeline that filters job adverts">
+          <source src="media/ui-radarkerja.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Agen yang kerja pagi-pagi</span><span data-l="en">Agents that work at dawn</span></b><span data-l="id">Alur otomatis empat langkah · 16:9 · 22 detik</span><span data-l="en">Four-step automated pipeline · 16:9 · 22 seconds</span></figcaption>
+      </figure>
+      <figure class="clip v-tall">
+        <video class="v916" controls playsinline preload="none" poster="media/ui-tutorotomatis.jpg" width="720" height="1280" aria-label="Video vertikal dengan teks besar tentang video tutorial yang dibuat otomatis dari aplikasi" data-aria-en="Vertical video with big type about tutorial videos generated from an app">
+          <source src="media/ui-tutorotomatis.mp4" type="video/mp4">
+        </video>
+        <figcaption><b><span data-l="id">Tutorial jadi sendiri</span><span data-l="en">Tutorials that make themselves</span></b><span data-l="id">Teks besar gaya iklan ponsel · 9:16 · <span class="nowrap">17 detik</span></span><span data-l="en">Big type, phone ad style · 9:16 · <span class="nowrap">17 seconds</span></span></figcaption>
+      </figure>
+    </div>
+    <p class="use"><span class="tag"><span data-l="id">kegunaan</span><span data-l="en">what it's for</span></span><span data-l="id">Buat halaman depan produk, iklan media sosial, atau presentasi ke investor dan klien. Versi 9:16 siap dipakai di Reels, TikTok, dan Shorts.</span><span data-l="en">For a product's landing page, social media ads, or a pitch to investors and clients. The 9:16 versions are ready for Reels, TikTok and Shorts.</span></p>
+  </section>
+
+  <section class="proj" aria-labelledby="bts">
+    <div class="proj-head">
+      <span class="proj-num" aria-hidden="true"><small>no.</small>06</span>
       <div>
         <h2 id="bts"><span data-l="id">Cara videonya dibikin</span><span data-l="en">How the videos get made</span></h2>
         <ul class="meta">
@@ -283,11 +329,11 @@ footer strong{color:var(--ink)}
         </ul>
       </div>
     </div>
-    <p class="sub"><span data-l="id">Video gaya film dan stop motion di halaman ini awalnya kode HTML dan Python, terus dirender jadi file video. Urutannya kira-kira begini.</span><span data-l="en">The cinematic and stop motion videos on this page start as HTML and Python code and are rendered into video files. Roughly, it goes like this.</span></p>
+    <p class="sub"><span data-l="id">Video gaya film, gaya aplikasi, dan stop motion di halaman ini awalnya kode HTML dan Python, terus dirender jadi file video. Urutannya kira-kira begini.</span><span data-l="en">The cinematic, software style and stop motion videos on this page start as HTML and Python code and are rendered into video files. Roughly, it goes like this.</span></p>
     <ol class="steps">
       <li><span data-l="id">Saya kumpulkan beberapa contoh video dengan gaya yang diinginkan, lalu saya bedah per frame, misalnya temponya atau cara teksnya muncul.</span><span data-l="en">I collect a few videos in a style you like and go through them frame by frame, looking at things like the pace and how the text comes in.</span></li>
       <li><span data-l="id">Sebelum render, urutan adegan per detik plus 3 sampai 4 gambar contoh saya kirim dulu. Kalau mau ganti sesuatu, paling murah di tahap ini.</span><span data-l="en">Before anything is rendered, you get the scene order second by second and 3 to 4 sample frames. If you want something changed, this is the cheapest moment to say so.</span></li>
-      <li><span data-l="id">Untuk video gaya film dan stop motion, tiap frame saya gambar pakai HTML dan Python, mengikuti tampilan produknya. Video tutorial direkam langsung dari aplikasinya.</span><span data-l="en">For the cinematic and stop motion videos I draw every frame in HTML and Python, following the look of your product. Tutorials are recorded straight from the app.</span></li>
+      <li><span data-l="id">Untuk video gaya film, gaya aplikasi, dan stop motion, tiap frame saya gambar pakai HTML dan Python, mengikuti tampilan produknya. Video tutorial direkam langsung dari aplikasinya.</span><span data-l="en">For the cinematic, software style and stop motion videos I draw every frame in HTML and Python, following the look of your product. Tutorials are recorded straight from the app.</span></li>
       <li><span data-l="id">Musik dan efek suaranya juga keluar dari kode, jadi tidak perlu ngurus lisensi musik.</span><span data-l="en">The music and sound effects come out of code too, so there's no music licence to sort out.</span></li>
       <li><span data-l="id">Terakhir, frame di tiap titik transisi saya cek satu-satu, cari teks yang kepotong, elemen yang saling numpuk, atau kontras yang kurang. Setelah beres, video final saya kirim bareng caption yang siap diposting.</span><span data-l="en">Last, I check the frames at every transition for cut-off text, overlapping elements and weak contrast. Then the final video goes out with a caption ready to post.</span></li>
     </ol>
@@ -319,8 +365,8 @@ footer strong{color:var(--ink)}
 (function () {
   var root = document.documentElement;
   var T = {
-    id: { title: 'Hadi Azhar · Portofolio', desc: 'Hadi Azhar membuat aplikasi kecil, spreadsheet, video tutorial, dan video promo stop motion untuk usaha kecil. Batam, Indonesia.' },
-    en: { title: 'Hadi Azhar · Portfolio', desc: 'Hadi Azhar builds small web apps, spreadsheets, tutorial videos and stop motion promo videos for small businesses. Batam, Indonesia.' }
+    id: { title: 'Hadi Azhar · Portofolio', desc: 'Hadi Azhar membuat aplikasi kecil, spreadsheet, video tutorial, video produk gaya aplikasi, dan video promo stop motion untuk usaha kecil. Batam, Indonesia.' },
+    en: { title: 'Hadi Azhar · Portfolio', desc: 'Hadi Azhar builds small web apps, spreadsheets, tutorial videos, software style product videos and stop motion promo videos for small businesses. Batam, Indonesia.' }
   };
   // Keep the Indonesian attribute text so it can be restored.
   document.querySelectorAll('[data-aria-en]').forEach(function (el) { el.setAttribute('data-aria-id', el.getAttribute('aria-label')); });
